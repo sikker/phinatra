@@ -7,6 +7,7 @@ class Request {
 	private $isAjax;
 	private $isMobile;
 	private $input;
+	private $memory = array();
 
 	public function __construct(Router\Path &$path) {
 		$this->path = $path;
@@ -31,6 +32,17 @@ class Request {
 		return $this->input;
 	}
 
+	public function getMemory() {
+		return $this->memory;
+	}
+
+	public function setMemory($memory) {
+		if ( ! is_array($memory)) {
+			throw new RequestException('Parameter 1 of Phinatra\Request::setMemory() expected to be array, ' . gettype($memory) . ' given.');
+		}
+		$this->memory = $memory;
+	}
+
 	public function isInput($key = null) {
 		if ($key !== null) {
 			return (isset($this->input[$key]) && ! empty($this->input[$key]));
@@ -45,6 +57,5 @@ class Request {
 	public function isMobile() {
 		return $this->isMobile();
 	}
-
 
 }
