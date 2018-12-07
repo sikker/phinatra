@@ -10,12 +10,12 @@ Example of usage:
 
 	require 'vendor/autoload.php';
 
-	use Phinatra\Request;
-	use Phinatra\Response;
-	use Phinatra\Router\Router;
-	use Phinatra\Router\RouterException;
-	use Phinatra\Router\Route;
-	use Phinatra\Router\Path;
+	use Sikker\Phinatra\Request;
+	use Sikker\Phinatra\Response;
+	use Sikker\Phinatra\Router\Router;
+	use Sikker\Phinatra\Router\RouterException;
+	use Sikker\Phinatra\Router\Route;
+	use Sikker\Phinatra\Router\Path;
 
 	$router = new Router(Path::instance());
 

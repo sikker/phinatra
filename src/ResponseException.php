@@ -1,4 +1,4 @@
-<?php namespace Phinatra;
+<?php namespace Sikker\Phinatra;
 
 class ResponseException extends Exception {
 

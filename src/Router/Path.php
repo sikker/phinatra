@@ -1,4 +1,4 @@
-<?php namespace Phinatra\Router;
+<?php namespace Sikker\Phinatra\Router;
 
 class Path {
 
