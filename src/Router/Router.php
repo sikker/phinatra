@@ -15,7 +15,7 @@ class Router {
 		}
 	}
 
-	public function route(\Phinatra\Request $request, \Phinatra\Response $response) {
+	public function route(\Sikker\Phinatra\Request $request, \Sikker\Phinatra\Response $response) {
 		if (empty($this->routes)) {
 			throw new RouterException('Invalid route path');
 		}

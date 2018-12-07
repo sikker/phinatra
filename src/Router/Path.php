@@ -105,14 +105,14 @@ class Path {
 		} elseif (is_array($path)) {
 			foreach ($path as $key => $value) {
 				if ( ! is_string($value)) {
-					throw new \Phinatra\Router\PathException('Illegal path value type, must be string', $value);
+					throw new \Sikker\Phinatra\Router\PathException('Illegal path value type, must be string', $value);
 				}
 			}
 			return $path;
 		} elseif ($path === null ){
 			return null;
 		} else {
-			throw new \Phinatra\Router\PathException('Illegal path type, must be valid null, _GET string, /-delimitered string or single-level array', $path);
+			throw new \Sikker\Phinatra\Router\PathException('Illegal path type, must be valid null, _GET string, /-delimitered string or single-level array', $path);
 		}
 	}
 
