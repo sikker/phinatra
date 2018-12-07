@@ -1,0 +1,23 @@
+{
+    "name": "sikker/phinatra",
+    "type": "library",
+    "description": "Phinatra is a lightweight PHP router inspired by Sinatra, ideal for light or RESTful applications.",
+    "homepage": "https://github.com/sikker/phinatra",
+    "keywords": ["router", "controller", "restful", "rest", "simple", "light"],
+    "license": "CC-BY-4.0",
+    "authors": [
+        {
+            "name": "Per Sikker Hansen",
+            "email": "persikkerhansen@gmail.com",
+            "homepage": "https://github.com/sikker"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sikker\\Phinatra\\": "src/"
+        }
+    }
+}

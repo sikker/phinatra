@@ -1,14 +1,15 @@
 Phinatra
 ========
 
-Phinatra is an exercise in PHP 5.3+ techniques such as namespaces, type hinting and closures, written as a PHP implementation of Sinatra. It provides the Controller segment of Model-View-Controller, and can form an MVC application if joined by, for instance, Doctrine for models and Smarty for views. 
+Phinatra is a lightweight URI router written to be vaguely similar to Sinatra from Ruby. It provides the Controller layer of Model-View-Controller, and can form an MVC application if joined by for instance Doctrine for models and Twig for views. 
 
 Example of usage:
 -----------------
 
 	<?php
 
-	include 'phinatra/bootstrap.php';
+	require 'vendor/autoload.php';
+
 	use Phinatra\Request;
 	use Phinatra\Response;
 	use Phinatra\Router\Router;
