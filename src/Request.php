@@ -2,6 +2,14 @@
 
 namespace Sikker\Phinatra;
 
+/**
+ * Request class
+ *
+ * @package Sikker\Phinatra
+ * @since 1.0.0
+ * @author Per Sikker Hansen <persikkerhansen@gmail.com>
+ * @license CC-BY-4.0
+ */
 class Request
 {
 
@@ -12,6 +20,11 @@ class Request
     private $input;
     private $memory = array();
 
+    /**
+     * Constructor
+     *
+     * @param Router\Path contains methods for normalizing and validating incoming and outgoing URI paths
+     */
     public function __construct(Router\Path &$path)
     {
         $this->path = $path;
@@ -24,37 +37,61 @@ class Request
         $this->input = $_POST;
     }
 
+    /**
+     * Get the path singleton used
+     *
+     * @return Router\Path contains methods for normalizing and validating incoming and outgoing URI paths
+     */
     public function &getPath()
     {
         return $this->path;
     }
 
+    /**
+     * Get the method of the current request
+     *
+     * @return string
+     */
     public function getMethod()
     {
         return $this->method;
     }
 
+    /**
+     * Get the inputted form data for the current request
+     *
+     * @return array
+     */
     public function getInput()
     {
         return $this->input;
     }
 
+    /**
+     * Get what is currently stored in the request memory
+     *
+     * @return array
+     */
     public function getMemory()
     {
         return $this->memory;
     }
 
-    public function setMemory($memory)
+    /**
+     * Store a data array in the request memory
+     *
+     * @param array
+     */
+    public function setMemory(array $memory)
     {
-        if (! is_array($memory)) {
-            throw new RequestException(
-                'Parameter 1 of Sikker\Phinatra\Request::setMemory() expected to be array, '
-                 . gettype($memory) . ' given.'
-            );
-        }
         $this->memory = $memory;
     }
 
+    /**
+     * Whether or not this request inputs data
+     *
+     * @return bool
+     */
     public function isInput($key = null)
     {
         if ($key !== null) {
@@ -63,13 +100,23 @@ class Request
         return (empty($this->input));
     }
 
+    /**
+     * Whether or not this request is an AJAX one
+     *
+     * @return bool
+     */
     public function isAjax()
     {
         return $this->isAjax;
     }
 
+    /**
+     * Whether or not this request is a mobile one
+     *
+     * @return bool
+     */
     public function isMobile()
     {
-        return $this->isMobile();
+        return $this->isMobile;
     }
 }

@@ -4,6 +4,14 @@ namespace Sikker\Phinatra\Router;
 
 use \Sikker\Phinatra\Router\PathException;
 
+/**
+ * Path class
+ *
+ * @package Sikker\Phinatra\Router
+ * @since 1.0.0
+ * @author Per Sikker Hansen <persikkerhansen@gmail.com>
+ * @license CC-BY-4.0
+ */
 class Path
 {
 
@@ -11,6 +19,9 @@ class Path
     private $uri;
     private $isHttps;
     
+    /**
+     * Constructor
+     */
     private function __construct()
     {
         $this->uri = $this->normalizePath($_SERVER['REQUEST_URI']);
@@ -40,6 +51,11 @@ class Path
             $this->isHttps ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . '/' . implode('/', $urlSegments);
     }
 
+    /**
+     * Singleton instance method
+     *
+     * @return Path
+     */
     public static function &instance()
     {
         static $instance;
@@ -49,7 +65,13 @@ class Path
         return $instance;
     }
 
-    public function validatePath($path)
+    /**
+     * Validates a URI path
+     *
+     * @param string the path to validate
+     * @return bool whether or not the path is valid
+     */
+    public function validatePath(string $path)
     {
         if ($path === null) {
             return true;
@@ -66,17 +88,38 @@ class Path
         return $match;
     }
 
-    public function validateMethod($method)
+    /**
+     * Validates a HTTP method
+     *
+     * Check whether a given HTTP method is being invoked for the current request.
+     *
+     * @param string the method to check (GET, PUT etc.)
+     * @return bool whether or not the method is valid for this request
+     */
+    public function validateMethod(string $method)
     {
         return ($method === null || strtolower($method) === strtolower($_SERVER['REQUEST_METHOD']));
     }
 
+    /**
+     * Get the base url for the site
+     *
+     * @return string the base url
+     */
     public function getBaseUrl()
     {
         return $this->baseUrl;
     }
 
-    public function getUrl($uri)
+    /**
+     * Turn a URI into a full URL
+     *
+     * Reformats a given URI to a processed URL including the base url, normalized URI and any query strings necessary
+     *
+     * @param string the URI to process
+     * @return string the full URL
+     */
+    public function getUrl(string $uri)
     {
         $uri = $this->normalizePath($uri);
         $queryString = array();
@@ -91,16 +134,35 @@ class Path
         return $this->baseUrl . '/' . implode('/', $uri);
     }
 
+    /**
+     * Get the current URI
+     *
+     * @return string the current URI
+     */
     public function getUri()
     {
         return $this->uri;
     }
 
+    /**
+     * Whether or not the current request is HTTPS
+     *
+     * It really should be, by now.
+     *
+     * @return bool check whether the current request is HTTPS
+     */
     public function isHttps()
     {
         return $this->isHttps;
     }
 
+    /**
+     * Normalize a URI/array of URI segments
+     *
+     * @param mixed a string (URI) or an array of URI segments
+     * @return string returns the normalized URI
+     * @throws PathException
+     */
     private function normalizePath($path)
     {
         if (is_string($path)) {
