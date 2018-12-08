@@ -22,7 +22,7 @@ class Path
     /**
      * Constructor
      */
-    private function __construct()
+    public function __construct()
     {
         $this->uri = $this->normalizePath($_SERVER['REQUEST_URI']);
 
@@ -49,20 +49,6 @@ class Path
         }
         $this->baseUrl = (
             $this->isHttps ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . '/' . implode('/', $urlSegments);
-    }
-
-    /**
-     * Singleton instance method
-     *
-     * @return Path
-     */
-    public static function &instance()
-    {
-        static $instance;
-        if ($instance === null) {
-            $instance = new self();
-        }
-        return $instance;
     }
 
     /**

@@ -17,7 +17,8 @@ Example of usage:
 	use Sikker\Phinatra\Router\Route;
 	use Sikker\Phinatra\Router\Path;
 
-	$router = new Router(Path::instance());
+	$path = new Path();
+	$router = new Router($path);
 
 	$router->attach(new Route('/menu/for/tonight', function(Request $request, Response $response){
 		$response->setOutput('Spam, egg, sausage and spam');
@@ -25,7 +26,7 @@ Example of usage:
 	}));
 
 	try {
-		$response = $router->route(new Request(Path::instance()), new Response());
+		$response = $router->route(new Request($path), new Response());
 	} catch (RouterException $e) {
 		$response = new Response();
 		$response->setStatusCode(404);

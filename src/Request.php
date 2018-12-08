@@ -25,7 +25,7 @@ class Request
      *
      * @param Router\Path contains methods for normalizing and validating incoming and outgoing URI paths
      */
-    public function __construct(Router\Path &$path)
+    public function __construct(Router\Path $path)
     {
         $this->path = $path;
         $this->method = strtolower($_SERVER['REQUEST_METHOD']);
@@ -38,11 +38,11 @@ class Request
     }
 
     /**
-     * Get the path singleton used
+     * Get the path object used
      *
      * @return Router\Path contains methods for normalizing and validating incoming and outgoing URI paths
      */
-    public function &getPath()
+    public function getPath()
     {
         return $this->path;
     }
