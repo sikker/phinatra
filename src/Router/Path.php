@@ -82,7 +82,7 @@ class Path
      * @param string the method to check (GET, PUT etc.)
      * @return bool whether or not the method is valid for this request
      */
-    public function validateMethod(string $method)
+    public function validateMethod(string $method = null)
     {
         return ($method === null || strtolower($method) === strtolower($_SERVER['REQUEST_METHOD']));
     }
