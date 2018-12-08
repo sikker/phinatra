@@ -16,7 +16,6 @@ class Request
     private $path;
     private $method;
     private $isAjax;
-    private $isMobile;
     private $input;
     private $memory = array();
 
@@ -111,15 +110,5 @@ class Request
     public function isAjax()
     {
         return $this->isAjax;
-    }
-
-    /**
-     * Whether or not this request is a mobile one
-     *
-     * @return bool
-     */
-    public function isMobile()
-    {
-        return $this->isMobile;
     }
 }
