@@ -57,7 +57,7 @@ class Path
      * @param string the path to validate
      * @return bool whether or not the path is valid
      */
-    public function validatePath(string $path)
+    public function validatePath(string $path = null)
     {
         if ($path === null) {
             return true;
