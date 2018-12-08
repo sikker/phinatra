@@ -1,5 +1,8 @@
-<?php namespace Sikker\Phinatra;
+<?php
 
-class ResponseHandler {
+namespace Sikker\Phinatra;
+
+class ResponseHandler
+{
 
 }

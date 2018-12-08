@@ -1,27 +1,33 @@
-<?php namespace Sikker\Phinatra\Router;
+<?php
 
-class Route {
+namespace Sikker\Phinatra\Router;
 
-	private $path;
-	private $method;
-	private $callback;
+class Route
+{
 
-	public function __construct($path,\Closure $callback, $method = null) {
-		$this->path = $path;
-		$this->callback = $callback;
-		$this->method = $method;
-	}
+    private $path;
+    private $method;
+    private $callback;
 
-	public function getPath() {
-		return $this->path;
-	}
+    public function __construct($path, \Closure $callback, $method = null)
+    {
+        $this->path = $path;
+        $this->callback = $callback;
+        $this->method = $method;
+    }
 
-	public function getMethod() {
-		return $this->method;
-	}
+    public function getPath()
+    {
+        return $this->path;
+    }
 
-	public function getCallback() {
-		return $this->callback;
-	}
+    public function getMethod()
+    {
+        return $this->method;
+    }
 
+    public function getCallback()
+    {
+        return $this->callback;
+    }
 }

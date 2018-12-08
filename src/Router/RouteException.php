@@ -1,5 +1,8 @@
-<?php namespace Sikker\Phinatra\Router;
+<?php
 
-class RouteException extends Exception {
+namespace Sikker\Phinatra\Router;
+
+class RouteException extends Exception
+{
 
 }

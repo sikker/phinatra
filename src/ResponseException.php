@@ -1,5 +1,8 @@
-<?php namespace Sikker\Phinatra;
+<?php
 
-class ResponseException extends Exception {
+namespace Sikker\Phinatra;
+
+class ResponseException extends Exception
+{
 
 }

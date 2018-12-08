@@ -1,5 +1,8 @@
-<?php namespace Sikker\Phinatra;
+<?php
 
-class Exception extends \Exception {
+namespace Sikker\Phinatra;
+
+class Exception extends \Exception
+{
 
 }
