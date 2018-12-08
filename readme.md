@@ -6,33 +6,34 @@ Phinatra is a lightweight URI router written to be vaguely similar to Sinatra fr
 Example of usage:
 -----------------
 
-	<?php
+```php
+<?php
 
-	require 'vendor/autoload.php';
+require 'vendor/autoload.php';
 
-	use Sikker\Phinatra\Request;
-	use Sikker\Phinatra\Response;
-	use Sikker\Phinatra\Router\Router;
-	use Sikker\Phinatra\Router\RouterException;
-	use Sikker\Phinatra\Router\Route;
-	use Sikker\Phinatra\Router\Path;
+use Sikker\Phinatra\Request;
+use Sikker\Phinatra\Response;
+use Sikker\Phinatra\Router\Router;
+use Sikker\Phinatra\Router\RouterException;
+use Sikker\Phinatra\Router\Route;
+use Sikker\Phinatra\Router\Path;
 
-	$path = new Path();
-	$router = new Router($path);
+$path = new Path();
+$router = new Router($path);
 
-	$router->attach(new Route('/menu/for/tonight', function(Request $request, Response $response){
-		$response->setOutput('Spam, egg, sausage and spam');
-		return $response;
-	}));
+$router->attach(new Route('/menu/for/tonight', function(Request $request, Response $response){
+	$response->setOutput('Spam, egg, sausage and spam');
+	return $response;
+}));
 
-	try {
-		$response = $router->route(new Request($path), new Response());
-	} catch (RouterException $e) {
-		$response = new Response();
-		$response->setStatusCode(404);
-		$response->setOutput( $e->getMessage() );
-	}
+try {
+	$response = $router->route(new Request($path), new Response());
+} catch (RouterException $e) {
+	$response = new Response();
+	$response->setStatusCode(404);
+	$response->setOutput( $e->getMessage() );
+}
 
-	$response->handle();
-
+$response->handle();
+```
 
