@@ -88,11 +88,14 @@ class Request
     }
 
     /**
-     * Whether or not this request inputs data
+     * Check the request for input
+     * 
+     * Checks for specific input (by providing a key to check for) or whether there's any input in general.
      *
+     * @param string OPTIONAL. If you want to check for a particular input value, provide the key here. 
      * @return bool
      */
-    public function isInput($key = null)
+    public function isInput(string $key = null)
     {
         if ($key !== null) {
             return (isset($this->input[$key]) && ! empty($this->input[$key]));
