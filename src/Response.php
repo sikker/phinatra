@@ -24,17 +24,18 @@ class Response
      *
      * Performs output and redirect operations as required by the registered response.
      *
-     * @return void
+     * @return bool whether or not operations should continue after this method call. True on all but redirect responses.
      */
     public function handle()
     {
         if ($this->redirect !== null) {
             header('Location: ' . $this->redirect);
-            die();
+            return false;
         }
         http_response_code($this->statusCode);
         header('Content-Type: ' . $this->contentType . '; charset=' . $this->charset);
         echo $this->output;
+        return true;
     }
 
     /**
